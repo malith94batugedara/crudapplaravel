@@ -69,9 +69,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($product_id)
     {
-        //
+        $product=Product::find($product_id);
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -81,9 +82,21 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $product_id)
     {
-        //
+        $product = Product::find($product_id);
+
+        $product->name = $request->prodname;
+
+        $product->price = $request->prodprice;
+
+        $product->color = $request->prodcol;
+
+        $product->size = $request->prodsize;
+
+        $product->update();
+
+        return redirect(route('product.index'))->with('status','Product Updated Successfully!');
     }
 
     /**
@@ -92,8 +105,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product_id)
     {
-        //
+        $product=Product::find($product_id);
+        $product->delete();
+        return redirect(route('product.index'))->with('status','Product Deleted Successfully!');
     }
 }
