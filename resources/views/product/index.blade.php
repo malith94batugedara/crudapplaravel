@@ -36,8 +36,8 @@
                     <td>{{$product->color}}</td>
                     <td>{{$product->size}}</td>
                     <td>
-                        <a href="" class="btn btn-success">Edit</a>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('product.edit',$product->id) }}" class="btn btn-success">Edit</a>
+                        <a href="{{ route('product.delete',$product->id) }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 
