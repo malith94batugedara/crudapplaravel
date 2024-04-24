@@ -11,7 +11,7 @@
     
     <div class="container mt-4">
  
-         <h1 class="text-center">Add Product</h1><br/>
+         <h1 class="text-center">Add Product</h1><a href="{{ route('product.index') }}" class="btn btn-success float-end">All Products</a><br/><br/>
 
          <form action="{{ route('product.store') }}" method="post">
             @csrf
